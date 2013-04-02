@@ -34,9 +34,16 @@ hibernate {
 environments {
     development {
         dataSource {
-            url = 'jdbc:mysql://localhost:3306/development'
-            username = 'developer'
-            password = 'developing'
+            pooled = true
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ""
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+
+            //url = 'jdbc:mysql://localhost:3306/development'
+            //username = 'developer'
+            //password = 'developing'
         }
     }
     test {
